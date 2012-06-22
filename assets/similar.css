@@ -1,0 +1,5 @@
+* {padding:0; margin: 0;}
+body, #wrap, .audio, .similar {background: #121212;}
+.audio .similar {width: 115px; height: 115px; float: left; margin: 4px; text-align: center; cursor: pointer; overflow: hidden; padding: 0;}
+.audio .similar .image {width: 115px; height: 115px; overflow: hidden; -webkit-background-size: 115px auto;}
+.audio .similar .name {background: rgba(0,0,0,0.7); color: white; font-size: 14px; padding: 3px; text-shadow: 0 1px 0 #000;}

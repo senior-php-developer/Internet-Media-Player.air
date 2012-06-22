@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/2.0">
+	<id>com.ass.helloworld</id>
+	<version>5.1</version>
+	<filename>IMP</filename>
+    <name>IMP</name>
+    <description>Internet Media Player</description>
+	<copyright>Copyright 2010. Advanced Software Solutions</copyright>
+	<initialWindow>
+		<resizable>false</resizable>
+		<x>500</x>
+		<y>20</y>
+	  <systemChrome>none</systemChrome>
+		<transparent>true</transparent>
+		<title>Internet Player</title>
+		<visible>true</visible>
+		<content>app.html</content>
+		<width>410</width>
+		<height>600</height>
+	</initialWindow>
+	<icon>
+	    <image16x16>assets/img/logo_16.png</image16x16>
+	    <image32x32>assets/img/logo_32.png</image32x32>
+	    <image48x48>assets/img/logo_48.png</image48x48>
+	    <image128x128>assets/img/logo_128.png</image128x128>
+	</icon>
+</application>

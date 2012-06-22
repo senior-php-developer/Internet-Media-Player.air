@@ -1,0 +1,217 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+  <link rel="stylesheet" type="text/css" href="assets/global.css" />    
+	<link rel="stylesheet" href="lib/jplayer/css/jplayer.css" type="text/css">
+	
+	<script type="application/x-shockwave-flash" src="lib/air/applicationupdater_ui.swf" />
+	<script src="lib/air/AIRAliases.js"></script>
+	<!--<script src="lib/air/AIRIntrospector.js"></script>-->
+	
+  <script src="lib/jquery/jquery-1.4.js"></script>
+	<script src="lib/php/php.js"></script>
+	<script src="lib/xregexp.js"></script>
+	<script src="lib/xml2json.js"></script>
+	<script src="lib/json2xml.js"></script>
+	<script src="lib/json_parse.js"></script>
+	
+	<script src="lib/jtools/jquery.tabs.js"></script>
+	<script src="lib/jtools/jquery.tooltip.js"></script>
+	<script src="lib/jplayer/jplayer.js"></script>
+	<script src="lib/mbtooltip/mbTooltip.js"></script>
+	<script src="lib/mbtooltip/jquery.timers.js"></script>
+	<script src="lib/mbtooltip/jquery.dropshadow.js"></script>
+		
+	<script src="assets/AudioSearch.js"></script>
+	<script src="assets/VideoSearch.js"></script>
+	<script src="assets/Vkontakte.js"></script>
+	<script src="assets/LastFm.js"></script>
+	<script src="assets/Discogs.js"></script>
+	<script src="assets/YouTube.js"></script>
+	<script src="assets/RuTube.js"></script>
+	<script src="assets/Yandex.js"></script>
+	<script src="assets/Radio.js"></script>
+	<script src="assets/Playlist.js"></script>
+	
+	<script src="assets/utils.js"></script>
+	<script src="assets/behavior.js"></script>
+	<script src="assets/app.js"></script>
+	<title>IMP</title>
+</head>
+<body onload="onLoad()">
+<div id="wrap" class="hide">
+	<div id="toolbar" class="clr">
+		<div class="close btn"></div>
+		<div class="minimize btn"></div>
+		<div class="shorten btn"></div>
+		<ul class="tabs">
+			<li><a href="#" class="audio">Music</a></li>
+			<li><a href="#" class="video">Videos</a></li>
+			<li><a href="#" class="settings">Settings</a></li>
+		</ul>
+				
+	</div>
+	<div class="panes">
+		<!-- AUDIO PANE -->
+		<div class="wrap audio">
+			<div id="jquery_jplayer"></div>
+			<div class="play-info"></div>
+			<div class="jp-single-player">
+				<div class="jp-interface">
+					<ul class="jp-controls">
+						<li><a href="#" id="jplayer_play" class="jp-play" tabindex="1">play</a></li>
+						<li><a href="#" id="jplayer_pause" class="jp-pause" tabindex="1">pause</a></li>
+						<li><a href="#" id="jplayer_stop" class="jp-stop" tabindex="1">stop</a></li>
+						<li><a href="#" id="jplayer_next" class="jp-next" tabindex="1">next</a></li>
+						<li><a href="#" id="jplayer_volume_min" class="jp-volume-min" tabindex="1">min volume</a></li>
+					</ul>
+					<div class="jp-progress"><div id="jplayer_load_bar" class="jp-load-bar"><div id="jplayer_play_bar" class="jp-play-bar"></div></div></div>
+					<div id="jplayer_play_time" class="jp-play-time"></div>
+					<div id="jplayer_volume_bar" class="jp-volume-bar"><div id="jplayer_volume_bar_value" class="jp-volume-bar-value"></div></div>
+					<div id="jplayer_total_time" class="jp-total-time"></div>
+					<img src="assets/img/progress.gif" class="progress">
+				</div>
+			</div>
+			
+			<div class="search clr">
+				<div class="searchbox">	
+					<input type="text" class="query" placeholder="artist name">
+					<div class='cur-cat' onclick="$('.audio .categories').slideToggle()">Tracks</div>
+					<img class="button" src="assets/img/search.png" onclick="findMusic()">
+					<img class="button" src="assets/img/playlist.png" onclick="playlist.open()">
+					<img class="button" src="assets/img/star.png" onclick="$('.audio .radio-top').slideToggle()">
+				</div>
+				<div class="live"></div>
+				<div class='categories'>
+					<a href="#" data-type='1'>Tracks</a>
+					<a href="#" data-type='2'>Albums</a>
+					<a href="#" data-type='3'>Similar</a>
+					<a href="#" data-type='4'>Releases</a>
+					<a href="#" data-type='5'>Label</a>
+					<a href="#" data-type='6'>Global</a>
+				</div>
+				<div class='radio-top'>
+					<table>
+						<tr class='flags'>
+							<td><img src="assets/img/usflag.png"></td>
+							<td><img src="assets/img/ukflag.png"></td>
+							<td><img src="assets/img/ruflag.png"></td>
+							<td><img src="assets/img/ruflag.png"></td>
+						</tr>
+						<tr class='stations'>		
+							<td>
+								<a href="#" data-type='H1' data-source='amc'>US Top 40</a>
+								<a href="#" data-type='U1' data-source='amc'>US Urban</a>
+								<a href="#" data-type='U2' data-source='amc'>AC Urban</a>
+								<a href="#" data-type='Y0' data-source='amc'>Rhytmic</a>
+								<a href="#" data-type='A2' data-source='amc'>AC HOT</a>
+								<a href="#" data-type='R5' data-source='amc'>US Rock</a>
+								<a href="#" data-type='R2' data-source='amc'>Active Rock</a>
+								<a href="#" data-type='J1' data-source='amc'>Smooth Jazz</a>												
+							</td>
+							<td>
+								<a href="#" data-type='top100' data-arg='1' data-source='uk'>UK Top 100</a>
+								<a href="#" data-type='singles' data-source='bbc'>BBC1 Top 40</a>
+								<a href="#" data-type='dancesingles' data-source='bbc'>BBC1 Dance</a>
+								<a href="#" data-type='rocksingles' data-source='bbc'>BBC1 Rock</a>
+								<a href="#" data-type='rnbsingles' data-source='bbc'>BBC1 RnB</a>
+								<a href="#" data-type='indiesingles' data-source='bbc'>BBC1 Indie</a>				
+							</td>
+							<td>
+								<a href="#" data-type='dfm' data-arg='msk' data-source='prosto'>DFM</a>
+								<a href="#" data-type='hitfm' data-arg='msk' data-source='prosto'>Hit FM</a>
+								<a href="#" data-type='maximum' data-arg='msk' data-source='prosto'>Maximum</a>
+								<a href="#" data-type='radiorecord' data-arg='spb' data-source='prosto'>Record</a>
+								<a href="#" data-type='radionext' data-arg='msk' data-source='prosto'>NEXT FM</a>
+								<a href="#" data-type='nrj' data-arg='msk' data-source='prosto'>NRJ</a>
+								<a href="#" data-type='europeplus' data-arg='msk' data-source='prosto'>Europa Plus</a>
+								<a href="#" data-type='radioxfm' data-arg='msk' data-source='prosto'>X-FM</a>
+							</td>
+							<td>
+								<a href="#" data-type='bestfm' data-arg='msk' data-source='prosto'>Best FM</a>
+								<a href="#" data-type='piterfm' data-arg='spb' data-source='prosto'>Piter FM</a>
+								<a href="#" data-type='rockfm' data-arg='msk' data-source='prosto'>Rock FM</a>
+								<a href="#" data-type='relaxfm' data-arg='msk' data-source='prosto'>Relax FM</a>
+								<a href="#" data-type='retrofm' data-arg='msk' data-source='prosto'>Retro FM</a>						
+								<a href="#" data-type='radioclassicfm' data-arg='msk' data-source='prosto'>Classic FM</a>			
+								<a href="#" data-type='radiojazzfm' data-arg='msk' data-source='prosto'>Jazz Radio</a>
+								<a href="#" data-type='loveradio' data-arg='msk' data-source='prosto'>Love Radio</a>
+							</td>
+						</tr>
+					</table>
+					
+				</div>
+			</div>					
+
+			<div class="results"></div>
+		</div>
+		
+		<!-- VIDEO PANE -->
+		<div class="wrap video hide">
+			<div class="search clr">
+				<div class="searchbox">
+					<input type="text" class="query">
+					<div class='cur-cat' onclick="$('.video .categories').slideDown()">VKontakte</div>
+					<img class="button" src="assets/img/search.png" onclick="findVideo()">
+					<img class="button btn-setup" src="assets/img/settings.png" onclick="video.openSetup()">
+				</div>
+				<div class="live"></div>
+				<div class='categories'>
+					<a href="#" data-type='1'>VKontakte</a>
+					<a href="#" data-type='2'>Yandex</a>
+					<a href="#" data-type='3'>YouTube</a>
+					<a href="#" data-type='4'>RuTube</a>
+				</div>		
+			</div>
+			<div class="setup vk"><table><tr>
+				<td><b>Sort:</b></td><td><input type="radio" class="sort" name="sort" id="sort1" value="0"><label for="sort1">Date</label></td><td><input type="radio" class="sort" name="sort" id="sort2" value="1"><label for="sort2">Duration</label></td>
+			</tr><tr>
+				<td><b>Search:</b></td><td><input type="checkbox" class="grain" id="grain4" value="1"><label for="grain4">Title</label></td><td><input type="checkbox" class="grain" id="grain5" value="2"><label for="grain5">Description</label></td>
+				</tr></table>
+			</div>
+			
+			<div class="results"><div class="logo"></div></div>
+		</div>
+		
+		<!-- SETTINGS PANE -->
+		<div class="wrap settings hide" id="settings">
+			<div class="download">
+				<h3>Download location</h3>
+				<input type="text" value="Desktop\Downloads" style="width:260px; margin-top: 5px; background: #fff; border: 1px solid #888; padding: 2px;" disabled> <button onclick="browseDownload()">Browse</button>
+				<h3>Audio Search</h3>
+				Number of tracks to show for the artist: <select onchange="settings.audio.tracks = $('.settings .tracksnum').val()" class="tracksnum"> <option>50</option><option>100</option><option>150</option><option>200</option></select><br>
+				Use short global search: <input type="checkbox" value="1" class="short" onchange="settings.audio.short *= -1"> 
+			</div>
+			<div class="help">
+				<div class="text">
+					You must have a working VK account to use this app.<br>
+					Register <a href="http://vk.com" target="_blank">here</a> or use the test one:<br>
+					<code>vkmp10@gmail.com / impimp</code><hr>
+					Audio search finds tracks information on:<br>
+					Last.fm, Discogs, Musicbrainz.<br>
+					Video search finds material on:<br>
+					Yandex, YouTube, RuTube and VKontakte.<br>
+					<hr>
+					Website: <a href="http://imp.airy.me" target="_blank">imp.airy.me</a><br>
+					Feedback: send to <a href="mailto:imp@airy.me">email</a><br>
+					Suggestions: post to <a href="http://groups.google.com/group/imp-dev" target="_blank">Google group</a>	
+					<hr>
+					<div class="soc-icons">
+					<a href="http://vkontakte.ru/id100271530" target="_blank"><img src="assets/img/vkontakte2.png"></a> 
+					<a href="http://www.facebook.com/airymp" target="_blank"><img src="assets/img/facebook.png"></a> 
+					<a href="http://twitter.com/airyimp" target="_blank"><img src="assets/img/twitter.png"></a> 
+					<a href="http://www.reddit.com/user/imp99/" target="_blank"><img src="assets/img/reddit.png"></a> 
+					<a href="http://www.youtube.com/user/airyimp" target="_blank"><img src="assets/img/yt2.png"></a> 
+					<a href="http://imediaplayer.tumblr.com" target="_blank"><img src="assets/img/tumblr.gif"></a> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> <!-- #wrap -->
+<div class="hide" id="test"></div>
+
+<img class="hide" id="test-img">
+
+</body>
+</html>

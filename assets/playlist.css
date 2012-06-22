@@ -1,0 +1,27 @@
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, img, b, center, dl, dd, dt, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline;}
+
+body {line-height: 1; font-size: 12px; font-family: Helvetica;}
+ol, ul {list-style: none;}
+:focus {outline: 0;}
+.clr {overflow: hidden;}
+.clear {visibility: hidden; clear: both; width:0 ; height: 0;}
+.hide {display: none;}
+.ptr {cursor: pointer; }
+
+body {background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));}
+
+.control {background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); padding: 4px; border-bottom: 1px solid #888;}
+.control .buttons {}
+.control .buttons img {margin: 0 5px; cursor: pointer;}
+
+
+.playlist .row {border-top:1px solid #FFFFFF; border-bottom:1px solid #AAAAAA; cursor:pointer; overflow:hidden; padding: 0px 4px; font-size: 11.5px; line-height: 24px; background-image:-webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CCCCCC));}
+.playlist .row.active {border-top: 1px solid #777; border-bottom: 1px solid #aaa; color:#EAF4B9; background-image: -webkit-gradient(linear, 0% 0%, 0% 43%, from(#777), to(#333)); font-weight: bold; line-height: 28px;}
+
+.row .track {float:left; width:240px;  text-align: left; overflow: hidden; white-space: nowrap; font-size: 11px;}
+.row .track.long {overflow-x:-webkit-marquee; -webkit-marquee: forwards 300px 1 1 alternate;}
+.row:hover .track.long {overflow-x:-webkit-marquee; -webkit-marquee: auto 4px 1 30 alternate;}
+.row .info {float: right; width: 30px; text-align:right; font-size: 11px;}
+
+.playlist .queue {background-image: -webkit-gradient(linear, left top, left bottom, from(#f6fafe), to(#b9d9f7)) !important; color: #111 !important; border-top: 1px solid #fff !important; border-bottom: 1px solid #aaa !important;}
+.playlist .downbg {background: url(img/progress-bg.gif) repeat-x 0 0 !important; color: #222 !important; border-top: 1px solid #fff !important; border-bottom: 1px solid #aaa !important;}
