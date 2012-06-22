@@ -1,7 +1,0 @@
-body {font-size: 11px; background: #eee;}
-.rmx {border-bottom: 1px solid #aaa; padding: 3px; background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); cursor: pointer;  overflow: hidden; line-height: 17px;}
-.rmx:hover {background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#ccc));}
-.rmx .title {float: left; width: 220px;}
-.rmx .text {float: left; width: 220px;}
-.rmx .info {font-size: 11px; text-align: right; float: right; width: 50px;}
-.sep {border-bottom: 1px solid #aaa; padding: 3px; background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); cursor: pointer;  overflow: hidden; line-height: 17px; text-align: center; font-size: 13px; font-weight: bold;}
